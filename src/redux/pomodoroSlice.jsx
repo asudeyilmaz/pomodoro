@@ -1,7 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-  timer: "25:00",
+  timer: 25 * 60,
+  run: false,
 };
 
 export const pomodoroSlice = createSlice({
@@ -9,21 +10,18 @@ export const pomodoroSlice = createSlice({
   initialState,
   reducers: {
     pomodoroStart: (state) => {
-      let totalTime = 25 * 60;
-      const timer = setInterval(() => {
-        const minutes = Math.floor(totalTime / 60);
-        const seconds = totalTime % 60;
-        state.timer = `${minutes}:${seconds.toString().padStart(2, "0")}`;
-        totalTime--;
-        if (totalTime < 0) {
-          clearInterval(timer);
-          state.timer = "Süre doldu.";
-        }
-      }, 1000);
+      state.run = true;
+    },
+    tick: (state) => {
+      if (state.timer > 0) {
+        state.timer -= 1;
+      } else {
+        run = false;
+      }
     },
   },
 });
 
-export const {pomodoroStart} = pomodoroSlice.actions;
+export const {pomodoroStart, tick} = pomodoroSlice.actions;
 
 export default pomodoroSlice.reducer;
