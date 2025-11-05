@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {pomodoroStart} from "./redux/pomodoroSlice";
 
 function App() {
-  const pomodoro = useSelector((state) => state.pomodoro.value);
+  const pomodoro = useSelector((state) => state.pomodoro.timer);
   const dispatch = useDispatch();
   return (
     <div>
