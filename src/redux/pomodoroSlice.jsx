@@ -19,9 +19,23 @@ export const pomodoroSlice = createSlice({
         run = false;
       }
     },
+    pomodoroStop: (state) => {
+      state.run = false;
+    },
+    reset: (state) => {
+      state.timer = 25 * 60;
+      state.run = false;
+    },
+    short: (state) => {
+      state.timer = 5 * 60;
+    },
+    long: (state) => {
+      state.timer = 15 * 60;
+    },
   },
 });
 
-export const {pomodoroStart, tick} = pomodoroSlice.actions;
+export const {pomodoroStart, tick, pomodoroStop, reset, short, long} =
+  pomodoroSlice.actions;
 
 export default pomodoroSlice.reducer;

@@ -1,7 +1,8 @@
 import React from "react";
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {pomodoroStart, tick} from "../redux/pomodoroSlice";
+import {pomodoroStart, pomodoroStop, reset, tick} from "../redux/pomodoroSlice";
+
 function CountDown() {
   const {run, timer} = useSelector((state) => state.pomodoro);
   const dispatch = useDispatch();
@@ -20,7 +21,9 @@ function CountDown() {
   return (
     <div>
       <h1>{`${minutes}:${seconds}`} </h1>
-      <button onClick={() => dispatch(pomodoroStart())}>başlat</button>
+      <button onClick={() => dispatch(pomodoroStart())}>Başlat</button>
+      <button onClick={() => dispatch(pomodoroStop())}>Durdur</button>
+      <button onClick={() => dispatch(reset())}>Sıfırla</button>
     </div>
   );
 }
