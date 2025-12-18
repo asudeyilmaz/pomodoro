@@ -3,6 +3,7 @@ import {createSlice} from "@reduxjs/toolkit";
 const initialState = {
   timer: 25 * 60,
   run: false,
+  theme: "work",
 };
 
 export const pomodoroSlice = createSlice({
@@ -25,12 +26,15 @@ export const pomodoroSlice = createSlice({
 
     short: (state) => {
       state.timer = 5 * 60;
+      state.theme = "short-break ";
     },
     long: (state) => {
       state.timer = 15 * 60;
+      state.theme = "long-break";
     },
     pomodoro: (state) => {
       state.timer = 25 * 60;
+      state.theme = "work";
     },
   },
 });

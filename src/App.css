@@ -16,3 +16,32 @@ body {
   align-items: center;
   flex-direction: column;
 }
+h1 {
+  text-align: center;
+  color: white;
+  font-size: 50px;
+}
+
+.card {
+  width: 600px;
+  padding: 20px;
+  background: rgb(255 255 255 / 30%);
+  border-radius: 10px;
+}
+.work {
+  background-image: url("./pictures/night.jpg");
+  background-size: cover;
+  transition: background-image 0.5s ease;
+}
+
+.short-break {
+  background-image: url("./pictures/autumn.jpg");
+  background-size: cover;
+  transition: background-image 0.5s ease;
+}
+
+.long-break {
+  background-image: url("./pictures/rain.jpg");
+  background-size: cover;
+  transition: background-image 0.5s ease;
+}

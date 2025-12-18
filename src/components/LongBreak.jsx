@@ -1,12 +1,15 @@
 import React from "react";
 import {long} from "../redux/pomodoroSlice";
 import {useDispatch} from "react-redux";
+import "../css/buttons.css";
 
 function LongBreak() {
   const dispatch = useDispatch();
   return (
     <div>
-      <button onClick={() => dispatch(long())}>Long Break</button>
+      <button className="pomodoro-buttons" onClick={() => dispatch(long())}>
+        Long Break
+      </button>
     </div>
   );
 }
