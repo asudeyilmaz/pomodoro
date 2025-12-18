@@ -1,10 +1,18 @@
 import React from "react";
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {pomodoroStart, pomodoroStop, reset, tick} from "../redux/pomodoroSlice";
+import {pomodoroStart, pomodoroStop, tick} from "../redux/pomodoroSlice";
+import alarmSound from "../sounds/alarm.mp3";
 
 function CountDown() {
   const {run, timer} = useSelector((state) => state.pomodoro);
+  useEffect(() => {
+    if (timer == 0) {
+      const audio = new Audio(alarmSound);
+      audio.play();
+    }
+  }, [timer]);
+
   const dispatch = useDispatch();
   useEffect(() => {
     let interval;
@@ -23,7 +31,6 @@ function CountDown() {
       <h1>{`${minutes}:${seconds}`} </h1>
       <button onClick={() => dispatch(pomodoroStart())}>Başlat</button>
       <button onClick={() => dispatch(pomodoroStop())}>Durdur</button>
-      <button onClick={() => dispatch(reset())}>Sıfırla</button>
     </div>
   );
 }
